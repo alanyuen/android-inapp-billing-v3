@@ -918,11 +918,13 @@ public class BillingProcessor extends BillingBase
 	{
 		if (requestCode != PURCHASE_FLOW_REQUEST_CODE)
 		{
+			reportBillingError(Constants.BILLING_ERROR_OTHER_ERROR, null);
 			return false;
 		}
 		if (data == null)
 		{
 			Log.e(LOG_TAG, "handleActivityResult: data is null!");
+			reportBillingError(Constants.BILLING_ERROR_OTHER_ERROR, null);
 			return false;
 		}
 		int responseCode = data.getIntExtra(Constants.RESPONSE_CODE, Constants.BILLING_RESPONSE_RESULT_OK);
